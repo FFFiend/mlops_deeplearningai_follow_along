@@ -13,11 +13,10 @@ app = FastAPI(title="skeleton deployment")
 def home():
     return "Welcome to the skeleton fastapi server"
     
-@app.get("/predict")
-def prediction():
-    pipe = transformers.pipeline(model="facebook/bart-large-mnli")
-    output = pipe("What is the capital of China? Tell me more about it.")
-    print(output)
+@app.get("/predict/{prompt}")
+def prediction(prompt: str):
+    #pipe = transformers.pipeline(model="facebook/bart-large-mnli")
+    output = prompt
     return output
 
 uvicorn.run(app, host="127.0.0.1", port=3000, root_path="/serve")
