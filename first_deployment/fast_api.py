@@ -23,6 +23,10 @@ def prediction(prompt: str, model_id: str):
     output = pipe(prompt)
     return output
 
+# Things to think about:
+# Inference speed
+# model availability
+
 uvicorn.run(app, host="127.0.0.1", port=3000, root_path="/serve")
 
 
